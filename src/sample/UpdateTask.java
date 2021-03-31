@@ -45,7 +45,8 @@ public class UpdateTask implements Runnable{
                         String text = serverList.get(i).geteText();
                         String Dest = serverList.get(i).getDestination();
                         String obj = serverList.get(i).getObject();
-                        model.geteMailList().add(i ,new Email(Dest , obj , text));
+                        String Mitt = serverList.get(i).getMitt();
+                        model.geteMailList().add(i ,new Email(Dest , Mitt, obj , text));
                     }
                 }catch(ClassNotFoundException e){
                     System.out.println(e.getMessage());

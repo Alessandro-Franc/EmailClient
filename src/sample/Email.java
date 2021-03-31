@@ -1,20 +1,16 @@
 package sample;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.SimpleIntegerProperty;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
 public class Email{
 
     private StringProperty object = new SimpleStringProperty();
     private StringProperty eText = new SimpleStringProperty();
     private StringProperty destination = new SimpleStringProperty();
+    private StringProperty mitt = new SimpleStringProperty();
 
     public StringProperty objectProperty() {
         return object;
@@ -52,9 +48,22 @@ public class Email{
         this.destination.set(destination);
     }
 
-    public Email(String destination , String obj , String eText){
+    public StringProperty mittProperty() {
+        return mitt;
+    }
+
+    public String getMitt() {
+        return mitt.get();
+    }
+
+    public void setMitt(String mitt) {
+        this.mitt.set(mitt);
+    }
+
+    public Email(String destination , String mitt, String obj , String eText){
         setObject(obj);
         seteText(eText);
         setDestination(destination);
+        setMitt(mitt);
     }
 }
