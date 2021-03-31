@@ -25,8 +25,6 @@ public class Main extends Application {
         root.setTop(menuLoader.load());
         MenuController menuController = menuLoader.getController();
 
-        ConnectionController connectionController = new ConnectionController();
-
         Model m = new Model();
         m.setId("Mario@mail");
         listController.start(m);
