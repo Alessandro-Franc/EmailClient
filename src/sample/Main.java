@@ -33,6 +33,7 @@ public class Main extends Application {
 
         Model m = new Model();
         m.setId("Mario@mail");
+        System.out.println("dasd");
         listController.start(m);
         messageController.start(m);
         menuController.start(m);
