@@ -26,8 +26,8 @@ public class ListController extends ConnectionController{
 
     public void start(Model model){
         this.model= model;
-
         super.start(this.model);
+
         AggiornaLista();
 
         emailList.setItems(model.geteMailList());
@@ -42,10 +42,14 @@ public class ListController extends ConnectionController{
                 if (empty) {
                     setText(null);
                 } else {
-                    setText(email.getObject());
+                    setText(email.getMitt() + " : " + email.getObject() + " ");
                 }
             }
         });
+
+        //Runnable r = new UpdateTask(this.model);
+        //Thread t = new Thread(r);
+        //t.start();
     }
 }
 
