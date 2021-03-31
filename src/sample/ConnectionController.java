@@ -1,8 +1,6 @@
 package sample;
 
 import com.google.gson.Gson;
-import com.sun.javafx.tk.Toolkit;
-import javafx.scene.control.ListCell;
 
 import java.io.*;
 import java.net.InetAddress;
