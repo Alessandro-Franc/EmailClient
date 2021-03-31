@@ -3,13 +3,15 @@ package sample;
 import java.io.Serializable;
 
 public class EasyEmail implements Serializable {
-    private String object;
-    private String eText;
     private String destination;
     private String Mitt;
+    private String object;
+    private String eText;
 
-    public EasyEmail(String destination , String obj , String eText, String Mitt){
+
+    public EasyEmail(String destination, String Mitt, String obj , String eText){
         this.destination = destination;
+        this.Mitt = Mitt;
         this.object=obj;
         this.eText = eText;
     }

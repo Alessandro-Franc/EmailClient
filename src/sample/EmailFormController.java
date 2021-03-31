@@ -26,7 +26,7 @@ public class EmailFormController extends ConnectionController{
 
     @FXML
     private void sendEmailHandler(ActionEvent e){
-        email= new EasyEmail(DestEmail.getText(),ObjEmail.getText(),EmailText.getText(),Model.getId());
+        email= new EasyEmail(DestEmail.getText(),Model.getId(),ObjEmail.getText(),EmailText.getText());
         sendEmail(email);
         final Node source = (Node) e.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
