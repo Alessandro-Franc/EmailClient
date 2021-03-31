@@ -44,8 +44,8 @@ public class Email{
         return destination.get();
     }
 
-    public void setDestination(String destination) {
-        this.destination.set(destination);
+    public void setDestination(String[] destination) {
+        this.destination.set(String.valueOf(destination));
     }
 
     public StringProperty mittProperty() {
@@ -60,7 +60,7 @@ public class Email{
         this.mitt.set(mitt);
     }
 
-    public Email(String destination , String mitt, String obj , String eText){
+    public Email(String[] destination , String mitt, String obj , String eText){
         setObject(obj);
         seteText(eText);
         setDestination(destination);

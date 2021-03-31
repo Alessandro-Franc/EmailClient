@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class EmailFormController extends ConnectionController{
     private EasyEmail email;
@@ -26,7 +27,16 @@ public class EmailFormController extends ConnectionController{
 
     @FXML
     private void sendEmailHandler(ActionEvent e){
-        email= new EasyEmail(DestEmail.getText(),Model.getId(),ObjEmail.getText(),EmailText.getText());
+        String[] destinatari;
+        if(DestEmail.getText().contains(";")) {
+            destinatari = DestEmail.getText().replace(" ", "").split(";");
+        }
+        else {
+            destinatari = new String[1];
+            destinatari[0] = DestEmail.getText();
+        }
+
+        email= new EasyEmail(destinatari,Model.getId(),ObjEmail.getText(),EmailText.getText());
         sendEmail(email);
         final Node source = (Node) e.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();

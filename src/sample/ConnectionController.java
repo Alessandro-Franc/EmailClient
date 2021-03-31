@@ -39,7 +39,7 @@ public class ConnectionController{
                     serverList = ((ArrayList<EasyEmail>) in.readObject());
                     for(int i=0 ; i<serverList.size() ; i++){
                         String text = serverList.get(i).geteText();
-                        String Dest = serverList.get(i).getDestination();
+                        String[] Dest = serverList.get(i).getDestination();
                         String obj = serverList.get(i).getObject();
                         String Mitt = serverList.get(i).getMitt();
                         model.geteMailList().add(i ,new Email(Dest , Mitt, obj , text));
