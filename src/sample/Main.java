@@ -2,15 +2,11 @@ package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
+
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.net.InetAddress;
-import java.net.Socket;
 
 public class Main extends Application {
 
@@ -33,7 +29,6 @@ public class Main extends Application {
 
         Model m = new Model();
         m.setId("Mario@mail");
-        System.out.println("dasd");
         listController.start(m);
         messageController.start(m);
         menuController.start(m);
