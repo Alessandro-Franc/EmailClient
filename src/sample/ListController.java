@@ -27,8 +27,8 @@ public class ListController extends ConnectionController{
     public void start(Model model){
         this.model= model;
         super.start(this.model);
-
         AggiornaLista();
+        model.seteMaillistR();
 
         emailList.setItems(model.geteMailList());
 
@@ -42,7 +42,11 @@ public class ListController extends ConnectionController{
                 if (empty) {
                     setText(null);
                 } else {
-                    setText(email.getMitt() + " : " + email.getObject() + " ");
+                    if(model.getEmailVisual()==0){
+                        setText(email.getMitt() + " : " + email.getObject() + " ");
+                    }else{
+                        setText(email.getDestination()+ " : " + email.getObject() + " ");
+                    }
                 }
             }
         });

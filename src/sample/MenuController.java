@@ -35,6 +35,16 @@ public class MenuController extends ConnectionController{
         secondStage.show();
     }
 
+    @FXML
+    private void onClickViewEmailR(ActionEvent e){
+        model.seteMaillistR();
+    }
+
+    @FXML
+    private void onClickViewEmailS(ActionEvent e){
+        model.seteMaillistI();
+    }
+
     public void start(Model m){
         this.model=m;
         super.start(this.model);

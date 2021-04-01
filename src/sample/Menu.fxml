@@ -5,17 +5,19 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.MenuController">
+<MenuBar xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
    <menus>
       <Menu mnemonicParsing="false" text="Options">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
-            <MenuItem mnemonicParsing="false" onAction="#onClickAddEmail" text="Add Email" />
+            <MenuItem mnemonicParsing="false" onAction="#onClickAddEmail" text="Send Email" />
         </items>
       </Menu>
       <Menu mnemonicParsing="false" text="Unspecified Menu">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#onClickUpdate" text="Update" />
+            <MenuItem mnemonicParsing="false" onAction="#onClickViewEmailR" text="Email Recived" />
+            <MenuItem mnemonicParsing="false" onAction="#onClickViewEmailS" text="Email Sent" />
         </items>
       </Menu>
    </menus>
