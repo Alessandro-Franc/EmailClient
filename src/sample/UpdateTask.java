@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import static java.lang.Thread.sleep;
 
 public class UpdateTask implements Runnable{
-    private ArrayList<EasyEmail> serverList;
+    private ArrayList<ArrayList<EasyEmail>> serverList;
 
     private Model model;
 
@@ -32,11 +32,14 @@ public class UpdateTask implements Runnable{
 
     public void AggiornaLista() throws InterruptedException {
         while(true){
-            sleep(2000);
             System.out.println("AggiornaLista");
-            //resetto la lista
-            if(this.model.geteMailList().size()>0){
-                model.geteMailList().remove(0 , model.geteMailList().size());
+            //resetto la lista email Ricevute
+            if(model.getReMailList().size()>0){
+                model.getReMailList().clear();
+            }
+            //resetto la listsa email Inviate
+            if(this.model.getIeMailList().size()>0){
+                model.getIeMailList().clear();
             }
             //connessione al server
             try{
@@ -45,21 +48,31 @@ public class UpdateTask implements Runnable{
                 try{
                     Request r = new Request(0, model.getId());//senza id static non andava
                     DataOutputStream task = new DataOutputStream(s.getOutputStream());
-                    task.writeUTF(new Gson().toJson(r));
                     //mando la richiesta di ricevere la lista
-
+                    task.writeUTF(new Gson().toJson(r));
                     //ricevo la lista
                     ObjectInputStream in = new ObjectInputStream(s.getInputStream());
                     //aggiorno la lista
                     try{
-                        serverList = ((ArrayList<EasyEmail>) in.readObject());
-                        for(int i=0 ; i<serverList.size() ; i++){
-                            String text = serverList.get(i).geteText();
-                            String[] Dest = serverList.get(i).getDestination();
-                            String obj = serverList.get(i).getObject();
-                            String Mitt = serverList.get(i).getMitt();
-                            model.geteMailList().add(i ,new Email(Dest , Mitt, obj , text));
+                        serverList = ((ArrayList<ArrayList<EasyEmail>>) in.readObject());
+                        //prendo le email ricevute
+                        for(int i=0 ; i<serverList.get(0).size() ; i++){
+                            String text = serverList.get(0).get(i).geteText();
+                            String[] Dest = serverList.get(0).get(i).getDestination();
+                            String obj = serverList.get(0).get(i).getObject();
+                            String Mitt = serverList.get(0).get(i).getMitt();
+                            model.getReMailList().add(i ,new Email(Dest , Mitt, obj , text));
                         }
+                        //prendo le email inviate
+                        for(int i=0 ; i<serverList.get(1).size() ; i++){
+                            String text = serverList.get(1).get(i).geteText();
+                            String[] Dest = serverList.get(1).get(i).getDestination();
+                            String obj = serverList.get(1).get(i).getObject();
+                            String Mitt = serverList.get(1).get(i).getMitt();
+                            model.getIeMailList().add(i ,new Email(Dest , Mitt, obj , text));
+                        }
+                        model.seteMaillistR();
+                        model.seteMaillistI();
                     }catch(ClassNotFoundException e){
                         System.out.println(e.getMessage());
                     }
