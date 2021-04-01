@@ -45,7 +45,12 @@ public class Email{
     }
 
     public void setDestination(String[] destination) {
-        this.destination.set(String.valueOf(destination));
+        String dest = "";
+        for(int i = 0; i<destination.length; i++) {
+            dest += destination[i];
+            dest += "; ";
+        }
+        this.destination.set(dest);
     }
 
     public StringProperty mittProperty() {

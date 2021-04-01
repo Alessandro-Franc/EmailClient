@@ -56,6 +56,8 @@ public class ConnectionController{
                         String Mitt = serverList.get(1).get(i).getMitt();
                         model.getIeMailList().add(i ,new Email(Dest , Mitt, obj , text));
                     }
+                    model.seteMaillistR();
+                    model.seteMaillistI();
                 }catch(ClassNotFoundException e){
                     System.out.println(e.getMessage());
                 }
