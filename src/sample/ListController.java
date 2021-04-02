@@ -1,27 +1,13 @@
 package sample;
+
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import static java.lang.Thread.sleep;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.net.InetAddress;
-import java.net.Socket;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.ResourceBundle;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
-
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class ListController extends ConnectionController{
     @FXML
@@ -59,7 +45,7 @@ public class ListController extends ConnectionController{
         ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
         executor.scheduleWithFixedDelay(() -> {
             Platform.runLater(new UpdateTask(this.model));
-        }, 5, 60, TimeUnit.SECONDS);
+        }, 60, 60, TimeUnit.SECONDS);
 
 
     }

@@ -22,7 +22,7 @@ public class ConnectionController{
         if(model.getReMailList().size()>0){
             model.getReMailList().clear();
         }
-        //resetto la listsa email Inviate
+        //resetto la lista email Inviate
         if(this.model.getIeMailList().size()>0){
             model.getIeMailList().clear();
         }

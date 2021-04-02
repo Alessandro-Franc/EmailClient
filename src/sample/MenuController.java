@@ -1,16 +1,7 @@
 package sample;
 
-import javafx.fxml.FXML;
-
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
-import javafx.stage.Stage;
-
-import java.io.IOException;
+import javafx.fxml.FXML;
 
 public class MenuController extends ConnectionController{
     private Model model;
@@ -27,12 +18,23 @@ public class MenuController extends ConnectionController{
 
     @FXML
     private void onClickAddEmail(ActionEvent e) throws Exception {
-        Stage secondStage = new Stage();
-        FXMLLoader formLoader = new FXMLLoader(getClass().getResource("NewMail.fxml"));
-        GridPane root = (GridPane) formLoader.load();
-        Scene scene = new Scene(root);
-        secondStage.setScene(scene);
-        secondStage.show();
+        new EmailFormController(0).start(this.model);
+        //per ora si può modificare questo int per provare gli altri metodi finche mancano i bottoni
+    }
+
+    @FXML
+    private void onClickReply(ActionEvent e) throws Exception {
+        new EmailFormController(1).start(this.model);
+    }
+
+    @FXML
+    private void onClickReplyAll(ActionEvent e) throws Exception {
+        new EmailFormController(2).start(this.model);
+    }
+
+    @FXML
+    private void onClickForward(ActionEvent e) throws Exception {
+        new EmailFormController(3).start(this.model);
     }
 
     @FXML
