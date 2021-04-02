@@ -31,13 +31,12 @@ public class UpdateTask implements Runnable{
     }
 
     public void AggiornaLista() throws InterruptedException {
-        while(true){
             System.out.println("AggiornaLista");
             //resetto la lista email Ricevute
             if(model.getReMailList().size()>0){
                 model.getReMailList().clear();
             }
-            //resetto la listsa email Inviate
+            //resetto la lista email Inviate
             if(this.model.getIeMailList().size()>0){
                 model.getIeMailList().clear();
             }
@@ -82,6 +81,5 @@ public class UpdateTask implements Runnable{
             }catch(IOException e){
                 e.printStackTrace();
             }
-        }
     }
 }

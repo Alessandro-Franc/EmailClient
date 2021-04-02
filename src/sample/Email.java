@@ -71,4 +71,16 @@ public class Email{
         setDestination(destination);
         setMitt(mitt);
     }
+
+    public EasyEmail toEasyMail() {
+        String[] destinatari;
+        if(getDestination().contains(";")) {
+            destinatari = getDestination().replace(" ", "").split(";");
+        }
+        else {
+            destinatari = new String[1];
+            destinatari[0] = getDestination();
+        }
+        return new EasyEmail(destinatari, getMitt(), getObject(), geteText());
+    }
 }

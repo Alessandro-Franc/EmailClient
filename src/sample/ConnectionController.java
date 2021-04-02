@@ -88,4 +88,25 @@ public class ConnectionController{
             e.printStackTrace();
         }
     }
+
+    public synchronized void deleteEmail(Email m){
+        try{
+            EasyEmail ee = m.toEasyMail();
+            String nomeHost = InetAddress.getLocalHost().getHostName();
+            Socket s = new Socket(nomeHost, 8082);
+            System.out.println("Ho aperto il socket verso il server");
+            try{
+                //avviso che sto mandando una mail
+                String send = new Gson().toJson(new DeleteMail(Model.getId(), ee));
+                DataOutputStream emailOut = new DataOutputStream(s.getOutputStream());
+                //mando l'oggetto con la mail
+                emailOut.writeUTF(send);
+                System.out.println("email mandata: "+send);
+            }finally{
+                s.close();
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
 }

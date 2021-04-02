@@ -24,6 +24,8 @@ public class Model{
     //array per email inviate
     private ArrayList<Email> IeMailList = new ArrayList<>();
 
+    private ArrayList<ArrayList<Email>> temp;
+
     //flag per la visualizzazione
     private int EmailVisual=0;
 
