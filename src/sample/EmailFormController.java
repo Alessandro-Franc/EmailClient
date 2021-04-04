@@ -27,7 +27,8 @@ public class EmailFormController extends ConnectionController{
     private TextArea EmailText;
 
     @FXML
-    private void sendEmailHandler(ActionEvent e){
+    private void sendEmailHandler(ActionEvent e) {
+        boolean problem = true;
         String[] destinatari;
         if(DestEmail.getText().contains(";")) {
             destinatari = DestEmail.getText().replace(" ", "").split(";");
@@ -36,8 +37,14 @@ public class EmailFormController extends ConnectionController{
             destinatari = new String[1];
             destinatari[0] = DestEmail.getText();
         }
+        /*while(problem) {
+            problem = false;
+            for(int i = 0; i<destinatari.length; i++) {
+                if(!destinatari[i].contains("@")) problem = true; //setto true se un destinatario è scritto male
+            }
+        }*/
 
-        email= new EasyEmail(destinatari,Model.getId(),ObjEmail.getText(),EmailText.getText());
+        email = new EasyEmail(destinatari, model.getId(), ObjEmail.getText(), EmailText.getText());
         sendEmail(email);
         final Node source = (Node) e.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();

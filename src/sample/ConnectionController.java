@@ -41,23 +41,24 @@ public class ConnectionController{
                 try{
                     serverList = ((ArrayList<ArrayList<EasyEmail>>) in.readObject());
                     //prendo le email ricevute
-                    for(int i=0 ; i<serverList.get(0).size() ; i++){
+                    for (int i = 0; i < serverList.get(0).size(); i++) {
                         String text = serverList.get(0).get(i).geteText();
                         String[] Dest = serverList.get(0).get(i).getDestination();
                         String obj = serverList.get(0).get(i).getObject();
                         String Mitt = serverList.get(0).get(i).getMitt();
-                        model.getReMailList().add(i ,new Email(Dest , Mitt, obj , text));
+                        model.getReMailList().add(i, new Email(Dest, Mitt, obj, text));
                     }
                     //prendo le email inviate
-                    for(int i=0 ; i<serverList.get(1).size() ; i++){
+                    for (int i = 0; i < serverList.get(1).size(); i++) {
                         String text = serverList.get(1).get(i).geteText();
                         String[] Dest = serverList.get(1).get(i).getDestination();
                         String obj = serverList.get(1).get(i).getObject();
                         String Mitt = serverList.get(1).get(i).getMitt();
-                        model.getIeMailList().add(i ,new Email(Dest , Mitt, obj , text));
+                        model.getIeMailList().add(i, new Email(Dest, Mitt, obj, text));
                     }
-                    model.seteMaillistR();
                     model.seteMaillistI();
+                    model.seteMaillistR();
+
                 }catch(ClassNotFoundException e){
                     System.out.println(e.getMessage());
                 }
@@ -76,7 +77,7 @@ public class ConnectionController{
             System.out.println("Ho aperto il socket verso il server");
             try{
                 //avviso che sto mandando una mail
-                String send = new Gson().toJson(new SendMail(Model.getId(), m));
+                String send = new Gson().toJson(new SendMail(model.getId(), m));
                 DataOutputStream emailOut = new DataOutputStream(s.getOutputStream());
                 //mando l'oggetto con la mail
                 emailOut.writeUTF(send);
@@ -96,8 +97,8 @@ public class ConnectionController{
             Socket s = new Socket(nomeHost, 8082);
             System.out.println("Ho aperto il socket verso il server");
             try{
-                //avviso che sto mandando una mail
-                String send = new Gson().toJson(new DeleteMail(Model.getId(), ee));
+                //avviso che sto mandando una richiesta di eliminazione mail
+                String send = new Gson().toJson(new DeleteMail(model.getId(), ee, model.getEmailVisual()));
                 DataOutputStream emailOut = new DataOutputStream(s.getOutputStream());
                 //mando l'oggetto con la mail
                 emailOut.writeUTF(send);

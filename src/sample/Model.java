@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Model{
+
+    //utente del client
+    private String id;
+
     //array per visualizzazione
     ObservableList<Email> eMailList = FXCollections.observableArrayList(email ->
             new Observable[] {email.objectProperty()});
@@ -69,13 +73,13 @@ public class Model{
         }
     }
 
-    private static String id; //reso static
+
 
     public void setId(String i){
         id=i;
     }
 
-    public static String getId(){ //reso static
+    public String getId(){
         return id;
     }
 
