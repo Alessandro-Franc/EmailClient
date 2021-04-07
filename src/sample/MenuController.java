@@ -23,21 +23,6 @@ public class MenuController extends ConnectionController{
     }
 
     @FXML
-    private void onClickReply(ActionEvent e) throws Exception {
-        new EmailFormController(1).start(this.model);
-    }
-
-    @FXML
-    private void onClickReplyAll(ActionEvent e) throws Exception {
-        new EmailFormController(2).start(this.model);
-    }
-
-    @FXML
-    private void onClickForward(ActionEvent e) throws Exception {
-        new EmailFormController(3).start(this.model);
-    }
-
-    @FXML
     private void onClickViewEmailR(ActionEvent e){
         model.seteMaillistR();
     }

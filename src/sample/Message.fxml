@@ -21,7 +21,8 @@
             <ColorAdjust />
          </effect>
       </TextField>
-      <Button layoutX="14.0" layoutY="382.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" text="Answer" AnchorPane.bottomAnchor="13.199999999999978" />
-      <Button layoutX="127.0" layoutY="383.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="90.0" text="Forward" AnchorPane.bottomAnchor="13.199999999999978" AnchorPane.leftAnchor="127.0" />
+      <Button fx:id="Reply" layoutX="14.0" layoutY="382.0" mnemonicParsing="false" onAction="#onClickReply" prefHeight="27.0" prefWidth="90.0" text="Reply" AnchorPane.bottomAnchor="13.199999999999978" AnchorPane.leftAnchor="14.0" />
+      <Button fx:id="ReplyAll" layoutX="130.0" layoutY="460.0" mnemonicParsing="false" onAction="#onClickReplyAll" prefHeight="26.0" prefWidth="90.0" text="Reply All" AnchorPane.bottomAnchor="13.600000000000001" AnchorPane.leftAnchor="130.0" />
+      <Button fx:id="Forward" layoutX="245.0" layoutY="460.0" mnemonicParsing="false" onAction="#onClickForward" prefHeight="26.0" prefWidth="90.0" text="Forward" AnchorPane.bottomAnchor="13.600000000000023" AnchorPane.leftAnchor="245.0" />
    </children>
 </AnchorPane>

@@ -1,16 +1,34 @@
 package sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class MessageController{
     private Model model;
+
     @FXML
     private TextArea MailText;
 
     @FXML
     private TextField DestinationText;
+
+    @FXML
+    private void onClickReply(ActionEvent e){
+        new EmailFormController(1).start(this.model);
+    }
+
+    @FXML
+    private void onClickReplyAll(ActionEvent e) throws Exception {
+        new EmailFormController(2).start(this.model);
+    }
+
+    @FXML
+    private void onClickForward(ActionEvent e) throws Exception {
+        new EmailFormController(3).start(this.model);
+    }
 
     public void start(Model m){
         this.model = m;
