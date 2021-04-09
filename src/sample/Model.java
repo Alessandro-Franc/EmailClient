@@ -30,9 +30,8 @@ public class Model{
     //flag per la visualizzazione
     private int EmailVisual=0;
 
-    public String getDisplayType() {
-        return DisplayType.get();
-    }
+    //Indica il tipo di schermata
+    private StringProperty DisplayType =  new SimpleStringProperty();
 
     public StringProperty displayTypeProperty() {
         return DisplayType;
@@ -42,9 +41,6 @@ public class Model{
         this.DisplayType.set(displayType);
     }
 
-    //Indica il tipo di schermata
-    private StringProperty DisplayType =  new SimpleStringProperty();
-
     public int getEmailVisual(){
         return this.EmailVisual;
     }
@@ -52,7 +48,6 @@ public class Model{
     public void setEmailVisual(int i){
         this.EmailVisual=i;
     }
-
 
     public ArrayList<Email> getReMailList (){
         return this.ReMailList;
@@ -64,7 +59,7 @@ public class Model{
 
     public void seteMaillistR(){
         setEmailVisual(0);
-        setDisplayType("Email Ricevute");
+        setDisplayType("Email Received");
         //pulisco la lista view
         if(geteMailList().size()>0){
             geteMailList().remove(0 , geteMailList().size());
@@ -77,7 +72,7 @@ public class Model{
 
     public void seteMaillistI(){
         setEmailVisual(1);
-        setDisplayType("Email Inviate");
+        setDisplayType("Email Sent");
         //pulisco la lista view
         if(geteMailList().size()>0){
             geteMailList().remove(0 , geteMailList().size());
@@ -87,7 +82,6 @@ public class Model{
             geteMailList().add(getIeMailList().get(i));
         }
     }
-
 
 
     public void setId(String i){
