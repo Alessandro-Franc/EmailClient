@@ -25,7 +25,7 @@ public class PopUpController {
     @FXML
     private TextField ErrorLabel;
 
-    public void start() throws InterruptedException {
+    public void start() {
         try {
             Stage secondStage = new Stage();
             FXMLLoader formLoader = new FXMLLoader(getClass().getResource("PopUp.fxml"));
@@ -34,6 +34,7 @@ public class PopUpController {
             Scene scene = new Scene(root);
             secondStage.setScene(scene);
             secondStage.show();
+            secondStage.setAlwaysOnTop(true);
             ErrorLabel.setText(this.Error);
         } catch (Exception e) {
             e.printStackTrace();

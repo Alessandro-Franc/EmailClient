@@ -3,6 +3,7 @@ package sample;
 import com.google.gson.Gson;
 //prova
 import java.io.*;
+import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ public class ConnectionController{
         this.model = model;
     }
 
-    public synchronized void AggiornaLista(){
+    public synchronized void AggiornaLista() {
         System.out.println("AggiornaLista");
         //resetto la lista email Ricevute
         if(model.getReMailList().size()>0){
@@ -31,7 +32,7 @@ public class ConnectionController{
             String nomeHost = InetAddress.getLocalHost().getHostName();
             Socket s = new Socket(nomeHost, 8082);
             try{
-                Request r = new Request(0, model.getId());//senza id static non andava
+                Request r = new Request(0, model.getId());
                 DataOutputStream task = new DataOutputStream(s.getOutputStream());
                 //mando la richiesta di ricevere la lista
                 task.writeUTF(new Gson().toJson(r));
@@ -56,6 +57,9 @@ public class ConnectionController{
                         String Mitt = serverList.get(1).get(i).getMitt();
                         model.getIeMailList().add(i, new Email(Dest, Mitt, obj, text));
                     }
+                    if(model.check(model.getReMailList().size())) {
+                        new PopUpController("Avete nuove mail").start();
+                    }
                     model.seteMaillistI();
                     model.seteMaillistR();
 
@@ -65,8 +69,8 @@ public class ConnectionController{
             }finally{
                 s.close();
             }
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            new PopUpController("Connessione al server assente, attendere di ricollegarsi").start();
         }
     }
 
@@ -84,13 +88,12 @@ public class ConnectionController{
                 DataInputStream in =  new DataInputStream(s.getInputStream());
                 String response = in.readUTF();
                 System.out.println(send + "\n" + response);
-               new PopUpController(response).start();
-                //chiamare qui metodo per popup dove stampare response
+                new PopUpController(response).start();
             }finally{
                 s.close();
             }
-        }catch(IOException | InterruptedException e){
-            e.printStackTrace();
+        }catch(Exception e){
+            new PopUpController("Connessione al server assente, attendere di ricollegarsi").start();
         }
     }
 
@@ -108,12 +111,19 @@ public class ConnectionController{
                 emailOut.writeUTF(send);
                 DataInputStream in =  new DataInputStream(s.getInputStream());
                 String response = in.readUTF();
+                if(model.getEmailVisual()==0 && !response.equals("email da eliminare non trovata")) {
+                    model.sizemin();
+                }
                 System.out.println(send+"\n"+response);
-                //chiamare qui popup per stampare response
+                new PopUpController(response).start();
             }finally{
                 s.close();
             }
-        }catch(IOException e){
+    }catch (ConnectException e) {
+            new PopUpController("Connessione al server assente, attendere di ricollegarsi").start();
+    } catch (NullPointerException e) {
+            new PopUpController("Nessuna email da eliminare selezionata").start();
+    } catch (Exception e) {
             e.printStackTrace();
         }
     }

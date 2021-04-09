@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import java.net.ConnectException;
+
 public class MenuController extends ConnectionController{
     private Model model;
 
@@ -23,7 +25,6 @@ public class MenuController extends ConnectionController{
     @FXML
     private void onClickAddEmail(ActionEvent e) throws Exception {
         new EmailFormController(0).start(this.model);
-        //per ora si può modificare questo int per provare gli altri metodi finche mancano i bottoni
     }
 
     @FXML

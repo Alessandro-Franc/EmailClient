@@ -6,6 +6,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.OutputStream;
+import java.net.ConnectException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -23,14 +24,10 @@ public class UpdateTask implements Runnable{
 
     @Override
     public void run() {
-        try {
-            AggiornaLista();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        AggiornaLista();
     }
 
-    public void AggiornaLista() throws InterruptedException {
+    public void AggiornaLista() {
             System.out.println("AggiornaLista");
             //resetto la lista email Ricevute
             if(model.getReMailList().size()>0){
@@ -70,6 +67,9 @@ public class UpdateTask implements Runnable{
                             String Mitt = serverList.get(1).get(i).getMitt();
                             model.getIeMailList().add(i ,new Email(Dest , Mitt, obj , text));
                         }
+                        if(model.check(model.getReMailList().size())) {
+                            new PopUpController("Avete nuove mail").start();
+                        }
                         model.seteMaillistR();
                         model.seteMaillistI();
                     }catch(ClassNotFoundException e){
@@ -78,8 +78,8 @@ public class UpdateTask implements Runnable{
                 }finally{
                     s.close();
                 }
-            }catch(IOException e){
-                e.printStackTrace();
+            }catch(Exception e){
+                System.out.println("Connessione al server assente, attendere di ricollegarsi");
             }
     }
 }

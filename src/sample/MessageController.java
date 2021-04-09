@@ -21,12 +21,12 @@ public class MessageController{
     }
 
     @FXML
-    private void onClickReplyAll(ActionEvent e) throws Exception {
+    private void onClickReplyAll(ActionEvent e) {
         new EmailFormController(2).start(this.model);
     }
 
     @FXML
-    private void onClickForward(ActionEvent e) throws Exception {
+    private void onClickForward(ActionEvent e) {
         new EmailFormController(3).start(this.model);
     }
 

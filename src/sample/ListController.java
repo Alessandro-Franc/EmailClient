@@ -6,11 +6,15 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.net.ConnectException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class ListController extends ConnectionController{
+
+    static ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
+
     @FXML
     private ListView<Email> emailList;
 
@@ -25,6 +29,7 @@ public class ListController extends ConnectionController{
         super.start(this.model);
 
         AggiornaLista();
+
 
         model.seteMaillistR();
 
@@ -51,12 +56,17 @@ public class ListController extends ConnectionController{
             }
         });
 
-        ScheduledExecutorService executor = Executors.newScheduledThreadPool(5);
+
         executor.scheduleWithFixedDelay(() -> {
             Platform.runLater(new UpdateTask(this.model));
         }, 60, 60, TimeUnit.SECONDS);
 
 
+    }
+
+    public static void stop() {
+        executor.shutdown();
+        System.out.println("shutdown");
     }
 }
 

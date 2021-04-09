@@ -33,6 +33,8 @@ public class Model{
     //Indica il tipo di schermata
     private StringProperty DisplayType =  new SimpleStringProperty();
 
+    private int size;
+
     public StringProperty displayTypeProperty() {
         return DisplayType;
     }
@@ -68,6 +70,7 @@ public class Model{
         for(int i=0; i<getReMailList().size() ; i++){
             geteMailList().add(getReMailList().get(i));
         }
+        size = getReMailList().size();
     }
 
     public void seteMaillistI(){
@@ -83,6 +86,13 @@ public class Model{
         }
     }
 
+    public boolean check(int a) {
+        return !(a == size);
+    }
+
+    public void sizemin() {
+        size--;
+    }
 
     public void setId(String i){
         id=i;
@@ -108,7 +118,4 @@ public class Model{
         this.currentEmail.set(currentEmail);
     }
 
-    public void deleteCurrentemail(){
-        this.geteMailList().remove(getCurrentEmail());
-    }
 }

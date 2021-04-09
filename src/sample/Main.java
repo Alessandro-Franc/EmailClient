@@ -35,6 +35,12 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
+
+    @Override
+    public void stop() {
+        ListController.stop();
+    }
+
     public static void main(String[] args) {
         launch(args);
     }
