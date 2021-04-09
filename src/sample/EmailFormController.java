@@ -104,7 +104,6 @@ public class EmailFormController extends ConnectionController{
                 break;
         }
         } catch (NullPointerException e) {System.out.println("Nessuna email selezionata, verrà creata una nuova mail vuota");}
-
     }
 
 }

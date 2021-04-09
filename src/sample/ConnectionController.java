@@ -84,11 +84,12 @@ public class ConnectionController{
                 DataInputStream in =  new DataInputStream(s.getInputStream());
                 String response = in.readUTF();
                 System.out.println(send + "\n" + response);
+               new PopUpController(response).start();
                 //chiamare qui metodo per popup dove stampare response
             }finally{
                 s.close();
             }
-        }catch(IOException e){
+        }catch(IOException | InterruptedException e){
             e.printStackTrace();
         }
     }
