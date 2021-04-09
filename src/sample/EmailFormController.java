@@ -28,7 +28,7 @@ public class EmailFormController extends ConnectionController{
 
     @FXML
     private void sendEmailHandler(ActionEvent e) {
-        boolean problem = true;
+        boolean problem = false;
         String[] destinatari;
         if(DestEmail.getText().contains(";")) {
             destinatari = DestEmail.getText().replace(" ", "").split(";");
@@ -37,18 +37,24 @@ public class EmailFormController extends ConnectionController{
             destinatari = new String[1];
             destinatari[0] = DestEmail.getText();
         }
-        /*while(problem) {
-            problem = false;
-            for(int i = 0; i<destinatari.length; i++) {
-                if(!destinatari[i].contains("@")) problem = true; //setto true se un destinatario è scritto male
-            }
-        }*/
 
-        email = new EasyEmail(destinatari, model.getId(), ObjEmail.getText(), EmailText.getText());
-        sendEmail(email);
-        final Node source = (Node) e.getSource();
-        final Stage stage = (Stage) source.getScene().getWindow();
-        stage.close();
+        for(int i = 0; i<destinatari.length; i++) {
+            if (!destinatari[i].matches(".*.@..*")) {
+                System.out.println(destinatari[i] + " e' scritto male");
+                problem = true;
+            }//setto true se almeno un destinatario è scritto male
+        }
+
+        if(!problem) {
+            email = new EasyEmail(destinatari, model.getId(), ObjEmail.getText(), EmailText.getText());
+            sendEmail(email);
+            final Node source = (Node) e.getSource();
+            final Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        }
+        else {
+            //chiamare popup di errore coi destinatari mal scritti
+        }
     }
 
     public EmailFormController(int i) {
