@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane minHeight="500.0" minWidth="250.0" prefHeight="500.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ListController">
    <children>
-      <ListView fx:id="emailList" layoutX="61.0" prefHeight="500.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Text layoutX="20.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email Type:" wrappingWidth="71.73675918579102" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="6.0" />
+      <TextField fx:id="MailType" editable="false" layoutX="95.0" prefHeight="26.0" prefWidth="155.0" promptText="Mail Type" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ListView fx:id="emailList" layoutX="61.0" layoutY="26.0" prefHeight="474.0" prefWidth="250.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="26.0" />
    </children>
 </AnchorPane>

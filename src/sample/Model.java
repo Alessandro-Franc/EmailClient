@@ -1,10 +1,7 @@
 package sample;
 
 import javafx.beans.Observable;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -33,6 +30,21 @@ public class Model{
     //flag per la visualizzazione
     private int EmailVisual=0;
 
+    public String getDisplayType() {
+        return DisplayType.get();
+    }
+
+    public StringProperty displayTypeProperty() {
+        return DisplayType;
+    }
+
+    public void setDisplayType(String displayType) {
+        this.DisplayType.set(displayType);
+    }
+
+    //Indica il tipo di schermata
+    private StringProperty DisplayType =  new SimpleStringProperty();
+
     public int getEmailVisual(){
         return this.EmailVisual;
     }
@@ -40,6 +52,7 @@ public class Model{
     public void setEmailVisual(int i){
         this.EmailVisual=i;
     }
+
 
     public ArrayList<Email> getReMailList (){
         return this.ReMailList;
@@ -51,6 +64,7 @@ public class Model{
 
     public void seteMaillistR(){
         setEmailVisual(0);
+        setDisplayType("Email Ricevute");
         //pulisco la lista view
         if(geteMailList().size()>0){
             geteMailList().remove(0 , geteMailList().size());
@@ -63,6 +77,7 @@ public class Model{
 
     public void seteMaillistI(){
         setEmailVisual(1);
+        setDisplayType("Email Inviate");
         //pulisco la lista view
         if(geteMailList().size()>0){
             geteMailList().remove(0 , geteMailList().size());

@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -13,13 +14,21 @@ public class ListController extends ConnectionController{
     @FXML
     private ListView<Email> emailList;
 
+    @FXML
+    private TextField MailType;
+
     private Model model;
 
     public void start(Model model) {
         this.model = model;
+
         super.start(this.model);
+
         AggiornaLista();
+
         model.seteMaillistR();
+
+        MailType.textProperty().bindBidirectional(model.displayTypeProperty());
 
         emailList.setItems(model.geteMailList());
 
