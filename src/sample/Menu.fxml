@@ -4,24 +4,34 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<MenuBar xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
-   <menus>
-      <Menu mnemonicParsing="false" text="Options">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
-            <MenuItem mnemonicParsing="false" onAction="#onClickAddEmail" text="Send Email" />
-        </items>
-      </Menu>
-      <Menu mnemonicParsing="false" text="Unspecified Menu">
-        <items>
-          <MenuItem mnemonicParsing="false" onAction="#onClickUpdate" text="Update" />
-            <MenuItem mnemonicParsing="false" onAction="#onClickViewEmailR" text="Email Recived" />
-            <MenuItem mnemonicParsing="false" onAction="#onClickViewEmailS" text="Email Sent" />
-        </items>
-      </Menu>
-   </menus>
-   <padding>
-      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-   </padding>
-</MenuBar>
+
+<AnchorPane prefHeight="36.0" prefWidth="380.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
+   <children>
+      <MenuBar>
+         <menus>
+            <Menu mnemonicParsing="false" text="Options">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickAddEmail" text="Send Email" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Unspecified Menu">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#onClickUpdate" text="Update" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickViewEmailR" text="Email Recived" />
+                  <MenuItem mnemonicParsing="false" onAction="#onClickViewEmailS" text="Email Sent" />
+              </items>
+            </Menu>
+         </menus>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </MenuBar>
+      <TextField fx:id="UserName" editable="false" layoutX="253.0" layoutY="4.0" prefHeight="26.0" prefWidth="124.0" promptText="User Name" />
+      <Text layoutX="200.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Utente:" />
+   </children>
+</AnchorPane>

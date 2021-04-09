@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
 
 public class MenuController extends ConnectionController{
     private Model model;
@@ -15,6 +16,9 @@ public class MenuController extends ConnectionController{
     private void onClickUpdate(ActionEvent e){
         AggiornaLista();
     }
+
+    @FXML
+    private TextField UserName;
 
     @FXML
     private void onClickAddEmail(ActionEvent e) throws Exception {
@@ -35,5 +39,6 @@ public class MenuController extends ConnectionController{
     public void start(Model m){
         this.model=m;
         super.start(this.model);
+        UserName.setText(model.getId());
     }
 }
