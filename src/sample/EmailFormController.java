@@ -70,6 +70,7 @@ public class EmailFormController extends ConnectionController{
             e.printStackTrace();
         }
         super.start(this.model);
+        try {
         switch(EmailType) {
             case 0: //new mail
                 break;
@@ -95,8 +96,8 @@ public class EmailFormController extends ConnectionController{
                 EmailText.setText(eText);
             default:
                 break;
-
         }
+        } catch (NullPointerException e) {System.out.println("Nessuna email selezionata, verrà creata una nuova mail vuota");}
 
     }
 

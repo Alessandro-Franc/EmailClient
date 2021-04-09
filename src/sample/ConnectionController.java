@@ -81,7 +81,10 @@ public class ConnectionController{
                 DataOutputStream emailOut = new DataOutputStream(s.getOutputStream());
                 //mando l'oggetto con la mail
                 emailOut.writeUTF(send);
-                System.out.println("email mandata: "+send);
+                DataInputStream in =  new DataInputStream(s.getInputStream());
+                String response = in.readUTF();
+                System.out.println(send + "\n" + response);
+                //chiamare qui metodo per popup dove stampare response
             }finally{
                 s.close();
             }
@@ -102,7 +105,10 @@ public class ConnectionController{
                 DataOutputStream emailOut = new DataOutputStream(s.getOutputStream());
                 //mando l'oggetto con la mail
                 emailOut.writeUTF(send);
-                System.out.println("email mandata: "+send);
+                DataInputStream in =  new DataInputStream(s.getInputStream());
+                String response = in.readUTF();
+                System.out.println(send+"\n"+response);
+                //chiamare qui popup per stampare response
             }finally{
                 s.close();
             }
