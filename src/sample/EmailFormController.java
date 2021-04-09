@@ -27,7 +27,7 @@ public class EmailFormController extends ConnectionController{
     private TextArea EmailText;
 
     @FXML
-    private void sendEmailHandler(ActionEvent e) {
+    private void sendEmailHandler(ActionEvent e) throws InterruptedException {
         boolean problem = false;
         String[] destinatari;
         if(DestEmail.getText().contains(";")) {
@@ -53,7 +53,7 @@ public class EmailFormController extends ConnectionController{
             stage.close();
         }
         else {
-            //chiamare popup di errore coi destinatari mal scritti
+            new PopUpController("Email isn't correct").start();
         }
     }
 
