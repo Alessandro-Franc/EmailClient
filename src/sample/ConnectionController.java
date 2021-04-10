@@ -47,7 +47,7 @@ public class ConnectionController{
                         String[] Dest = serverList.get(0).get(i).getDestination();
                         String obj = serverList.get(0).get(i).getObject();
                         String Mitt = serverList.get(0).get(i).getMitt();
-                        String data = serverList.get(1).get(i).getData();
+                        String data = serverList.get(0).get(i).getData();
                         model.getReMailList().add(i, new Email(Dest, Mitt, obj, text, data));
                     }
                     //prendo le email inviate
@@ -72,8 +72,7 @@ public class ConnectionController{
                 s.close();
             }
         }catch(Exception e){
-            new PopUpController("Connessione al server assente, attendere di ricollegarsi").start();
-        }
+e.printStackTrace();        }
     }
 
     public synchronized void sendEmail(EasyEmail m){
