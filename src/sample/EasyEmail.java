@@ -8,13 +8,15 @@ public class EasyEmail implements Serializable {
     private String Mitt;
     private String object;
     private String eText;
+    private String data;
 
 
-    public EasyEmail(String[] destination, String Mitt, String obj , String eText){
+    public EasyEmail(String[] destination, String Mitt, String obj , String eText, String data){
         this.destination = destination;
         this.Mitt = Mitt;
         this.object=obj;
         this.eText = eText;
+        this.data = data;
     }
 
     public String getObject(){
@@ -33,6 +35,8 @@ public class EasyEmail implements Serializable {
         return Mitt;
     }
 
+    public String getData() {return data;}
+
     public boolean Equals(EasyEmail m) {
         if(this.toString().equals(m.toString())) return true;
         else return false;
@@ -45,6 +49,6 @@ public class EasyEmail implements Serializable {
             dest += destination[i];
             dest += "; ";
         }
-        return "Mitt: "+this.getMitt() + " dest: " + dest + ", Object: "+ this.getObject() + ", eText: "+this.geteText();
+        return "Mitt: "+this.getMitt() + " dest: " + dest + ", Object: "+ this.getObject() + ", eText: "+this.geteText()+", data:"+this.getData();
     }
 }

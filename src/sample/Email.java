@@ -11,6 +11,7 @@ public class Email{
     private StringProperty eText = new SimpleStringProperty();
     private StringProperty destination = new SimpleStringProperty();
     private StringProperty mitt = new SimpleStringProperty();
+    private StringProperty data = new SimpleStringProperty();
 
     public StringProperty objectProperty() {
         return object;
@@ -36,8 +37,20 @@ public class Email{
         this.eText.set(eText);
     }
 
+    public void setData(String data) {
+        this.data.set(data);
+    }
+
+    public String getData() {
+        return data.get();
+    }
+
     public StringProperty destinationProperty() {
         return destination;
+    }
+
+    public StringProperty dataProperty() {
+        return data;
     }
 
     public String getDestination() {
@@ -65,11 +78,12 @@ public class Email{
         this.mitt.set(mitt);
     }
 
-    public Email(String[] destination , String mitt, String obj , String eText){
+    public Email(String[] destination , String mitt, String obj , String eText, String data){
         setObject(obj);
         seteText(eText);
         setDestination(destination);
         setMitt(mitt);
+        setData(data);
     }
 
     public EasyEmail toEasyMail() {
@@ -81,6 +95,6 @@ public class Email{
             destinatari = new String[1];
             destinatari[0] = getDestination();
         }
-        return new EasyEmail(destinatari, getMitt(), getObject(), geteText());
+        return new EasyEmail(destinatari, getMitt(), getObject(), geteText(), getData());
     }
 }

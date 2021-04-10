@@ -10,6 +10,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class EmailFormController extends ConnectionController {
     private EasyEmail email;
 
@@ -46,7 +51,10 @@ public class EmailFormController extends ConnectionController {
         }
 
         if (!problem) {
-            email = new EasyEmail(destinatari, model.getId(), ObjEmail.getText(), EmailText.getText());
+            Date date = Calendar.getInstance().getTime();
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String data = dateFormat.format(date);
+            email = new EasyEmail(destinatari, model.getId(), ObjEmail.getText(), EmailText.getText(), data);
             sendEmail(email);
             final Node source = (Node) e.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();

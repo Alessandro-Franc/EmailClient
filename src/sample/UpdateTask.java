@@ -57,7 +57,8 @@ public class UpdateTask implements Runnable{
                             String[] Dest = serverList.get(0).get(i).getDestination();
                             String obj = serverList.get(0).get(i).getObject();
                             String Mitt = serverList.get(0).get(i).getMitt();
-                            model.getReMailList().add(i ,new Email(Dest , Mitt, obj , text));
+                            String data = serverList.get(1).get(i).getData();
+                            model.getReMailList().add(i ,new Email(Dest , Mitt, obj , text, data));
                         }
                         //prendo le email inviate
                         for(int i=0 ; i<serverList.get(1).size() ; i++){
@@ -65,7 +66,8 @@ public class UpdateTask implements Runnable{
                             String[] Dest = serverList.get(1).get(i).getDestination();
                             String obj = serverList.get(1).get(i).getObject();
                             String Mitt = serverList.get(1).get(i).getMitt();
-                            model.getIeMailList().add(i ,new Email(Dest , Mitt, obj , text));
+                            String data = serverList.get(1).get(i).getData();
+                            model.getIeMailList().add(i ,new Email(Dest , Mitt, obj , text, data));
                         }
                         if(model.check(model.getReMailList().size())) {
                             new PopUpController("Avete nuove mail").start();
