@@ -31,7 +31,7 @@ public class Main extends Application {
         messageController.start(m);
         menuController.start(m);
 
-        primaryStage.setTitle("EmailTest");
+        primaryStage.setTitle("Client");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }

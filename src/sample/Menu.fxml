@@ -18,7 +18,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#onClickAddEmail" text="Send Email" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Unspecified Menu">
+            <Menu mnemonicParsing="false" text="Email Actions">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#onClickUpdate" text="Update" />
                   <MenuItem mnemonicParsing="false" onAction="#onClickViewEmailR" text="Email Recived" />
