@@ -72,8 +72,7 @@ public class ConnectionController{
                 s.close();
             }
         }catch(Exception e){
-            new PopUpController("Connessione al server assente, attendere di ricollegarsi").start();
-        }
+e.printStackTrace();        }
     }
 
     public synchronized void sendEmail(EasyEmail m){

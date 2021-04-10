@@ -81,7 +81,7 @@ public class UpdateTask implements Runnable{
                     s.close();
                 }
             }catch(Exception e){
-                System.out.println("Connessione al server assente, attendere di ricollegarsi");
+                e.printStackTrace();
             }
     }
 }
