@@ -57,7 +57,7 @@ public class UpdateTask implements Runnable{
                             String[] Dest = serverList.get(0).get(i).getDestination();
                             String obj = serverList.get(0).get(i).getObject();
                             String Mitt = serverList.get(0).get(i).getMitt();
-                            String data = serverList.get(1).get(i).getData();
+                            String data = serverList.get(0).get(i).getData();
                             model.getReMailList().add(i ,new Email(Dest , Mitt, obj , text, data));
                         }
                         //prendo le email inviate

@@ -5,12 +5,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 public class MessageController{
     private Model model;
 
     @FXML
     private TextArea MailText;
+
+    @FXML
+    private Text DataField;
 
     @FXML
     private TextField DestinationText;
@@ -36,6 +40,7 @@ public class MessageController{
             if (oldEmail != null) {
                 MailText.textProperty().unbindBidirectional(oldEmail.eTextProperty());
                 DestinationText.textProperty().unbindBidirectional(oldEmail.destinationProperty());
+                DataField.textProperty().unbindBidirectional(oldEmail.dataProperty());
             }
             if (newEmail== null) {
                 MailText.setText("");
@@ -43,6 +48,7 @@ public class MessageController{
             } else {
                 MailText.textProperty().bindBidirectional(newEmail.eTextProperty());
                 DestinationText.textProperty().bindBidirectional(newEmail.destinationProperty());
+                DataField.textProperty().bindBidirectional(newEmail.dataProperty());
             }
         });
 
