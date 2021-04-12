@@ -62,9 +62,16 @@ public class ConnectionController{
                     if(model.check(model.getReMailList().size())) {
                         new PopUpController("Avete nuove mail").start();
                     }
-                    model.seteMaillistI();
-                    model.seteMaillistR();
-
+                    switch(model.getEmailVisual()){
+                        case 0:
+                            model.seteMaillistI();
+                            model.seteMaillistR();
+                            break;
+                        case 1:
+                            model.seteMaillistR();
+                            model.seteMaillistI();
+                            break;
+                    }
                 }catch(ClassNotFoundException e){
                     System.out.println(e.getMessage());
                 }

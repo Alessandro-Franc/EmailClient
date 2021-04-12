@@ -72,8 +72,16 @@ public class UpdateTask implements Runnable{
                         if(model.check(model.getReMailList().size())) {
                             new PopUpController("Avete nuove mail").start();
                         }
-                        model.seteMaillistR();
-                        model.seteMaillistI();
+                        switch(model.getEmailVisual()){
+                            case 0:
+                                model.seteMaillistI();
+                                model.seteMaillistR();
+                                break;
+                            case 1:
+                                model.seteMaillistR();
+                                model.seteMaillistI();
+                                break;
+                        }
                     }catch(ClassNotFoundException e){
                         System.out.println(e.getMessage());
                     }
