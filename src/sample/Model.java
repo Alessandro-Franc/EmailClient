@@ -118,4 +118,8 @@ public class Model{
         this.currentEmail.set(currentEmail);
     }
 
+    public void deleteCurrentemail(){
+        this.geteMailList().remove(getCurrentEmail());
+    }
+
 }

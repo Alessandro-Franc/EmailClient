@@ -12,6 +12,7 @@ public class MenuController extends ConnectionController{
     @FXML
     private void onClickDelete(ActionEvent e){
         deleteEmail(model.getCurrentEmail());
+        model.deleteCurrentemail();
     }
 
     @FXML
