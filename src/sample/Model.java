@@ -115,11 +115,13 @@ public class Model{
     }
 
     public void setCurrentEmail(Email currentEmail) {
+        if (currentEmail!=null)
         this.currentEmail.set(currentEmail);
     }
 
     public void deleteCurrentemail(){
         this.geteMailList().remove(getCurrentEmail());
+        this.currentEmail.set(null);
     }
 
 }

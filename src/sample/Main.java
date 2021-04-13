@@ -26,7 +26,7 @@ public class Main extends Application {
         MenuController menuController = menuLoader.getController();
 
         Model m = new Model();
-        m.setId("Luigi@mail");
+        m.setId("Mario@mail");
         listController.start(m);
         messageController.start(m);
         menuController.start(m);
