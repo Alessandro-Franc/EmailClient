@@ -45,6 +45,7 @@ public class MessageController{
             if (newEmail== null) {
                 MailText.setText("");
                 DestinationText.setText("");
+                DataField.setText("");
             } else {
                 MailText.textProperty().bindBidirectional(newEmail.eTextProperty());
                 DestinationText.textProperty().bindBidirectional(newEmail.destinationProperty());
