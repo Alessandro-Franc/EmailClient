@@ -114,14 +114,19 @@ public class ConnectionController{
             System.out.println("Ho aperto il socket verso il server");
             try{
                 //avviso che sto mandando una richiesta di eliminazione mail
-                String send = new Gson().toJson(new DeleteMail(model.getId(), ee, model.getEmailVisual()));
+                int visual = model.getEmailVisual();
+                String send = new Gson().toJson(new DeleteMail(model.getId(), ee, visual));
                 DataOutputStream emailOut = new DataOutputStream(s.getOutputStream());
                 //mando l'oggetto con la mail
                 emailOut.writeUTF(send);
                 DataInputStream in =  new DataInputStream(s.getInputStream());
                 String response = in.readUTF();
-                if(model.getEmailVisual()==0 && !response.equals("email da eliminare non trovata")) {
+                if(visual==0 && !response.equals("email da eliminare non trovata")) {
                     model.sizemin();
+                    model.deleteCurrentemail(visual);
+                }
+                else if(visual == 1 && !response.equals("email da eliminare non trovata")) {
+                    model.deleteCurrentemail(visual);
                 }
                 System.out.println(send+"\n"+response);
                 new PopUpController(response).start();

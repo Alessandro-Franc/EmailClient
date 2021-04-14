@@ -59,7 +59,7 @@ public class ListController extends ConnectionController{
 
         executor.scheduleWithFixedDelay(() -> {
             Platform.runLater(new UpdateTask(this.model));
-        }, 1, 1, TimeUnit.SECONDS);
+        }, 5, 5, TimeUnit.SECONDS);
 
 
     }

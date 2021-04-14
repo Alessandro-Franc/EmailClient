@@ -90,8 +90,13 @@ public class Model{
         return !(a == size);
     }
 
+    public int getSize() {
+        return size;
+    }
+
     public void sizemin() {
         size--;
+        System.out.println(size);
     }
 
     public void setId(String i){
@@ -119,9 +124,20 @@ public class Model{
         this.currentEmail.set(currentEmail);
     }
 
-    public void deleteCurrentemail(){
+    public void deleteCurrentemail(int visual){
+        Boolean b = false;
+        if(visual == 0) {
+            this.getReMailList().remove(getCurrentEmail());
+            if(this.getReMailList().size()==0)
+                b = true;
+        }
+        else {
+            this.getIeMailList().remove(getCurrentEmail());
+            if(this.getIeMailList().size()==0)
+                b = true;
+        }
         this.geteMailList().remove(getCurrentEmail());
-        this.currentEmail.set(null);
+        if(b) this.currentEmail.set(null);
     }
 
 }
