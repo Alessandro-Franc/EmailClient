@@ -42,7 +42,7 @@ public class UpdateTask implements Runnable{
                 String nomeHost = InetAddress.getLocalHost().getHostName();
                 Socket s = new Socket(nomeHost, 8082);
                 try{
-                    Request r = new Request(0, model.getId());//senza id static non andava
+                    Request r = new Request(0, model.getId());
                     DataOutputStream task = new DataOutputStream(s.getOutputStream());
                     //mando la richiesta di ricevere la lista
                     task.writeUTF(new Gson().toJson(r));
